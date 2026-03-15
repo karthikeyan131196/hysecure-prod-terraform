@@ -3,7 +3,7 @@ resource "aws_security_group" "hysecure_sg" {
   description = "HySecure Security Group"
   vpc_id      = aws_vpc.hysecure_vpc.id
 
-  ################ TCP INBOUND ################
+  # TCP INBOUND 
 
   ingress {
   from_port   = 443
@@ -33,7 +33,7 @@ resource "aws_security_group" "hysecure_sg" {
     }
   }
 
-  ################ UDP INBOUND ################
+  # UDP INBOUND 
 
   dynamic "ingress" {
     for_each = {
@@ -50,7 +50,7 @@ resource "aws_security_group" "hysecure_sg" {
     }
   }
 
-  ################ OUTBOUND ################
+  # OUTBOUND 
 
   egress {
     from_port   = 0

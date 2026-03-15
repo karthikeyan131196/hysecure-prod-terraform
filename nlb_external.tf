@@ -1,6 +1,5 @@
-############################################
+
 # External Network Load Balancer
-############################################
 
 resource "aws_lb" "external_nlb" {
   name               = "hysecure-external-nlb"
@@ -20,9 +19,8 @@ resource "aws_lb" "external_nlb" {
   }
 }
 
-############################################
+
 # Listener - User-Login (443)
-############################################
 
 resource "aws_lb_listener" "listener_https" {
   load_balancer_arn = aws_lb.external_nlb.arn

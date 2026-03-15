@@ -1,6 +1,5 @@
-#############################################
+
 # Generate SSH Private Key
-#############################################
 
 resource "tls_private_key" "hysecure_key" {
   algorithm = "RSA"
@@ -11,9 +10,8 @@ resource "local_file" "hysecure_pem" {
   filename        = "${path.module}/hysecure-key.pem"
   file_permission = "0400"
 }
-#############################################
+
 # AWS Key Pair
-#############################################
 
 resource "aws_key_pair" "hysecure_key" {
   key_name   = var.key_pair_name

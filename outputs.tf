@@ -45,14 +45,6 @@ output "internal_nlb_by_az" {
   value = {
     dns_name = aws_lb.internal_nlb.dns_name
 
-    ips_by_az = {
-      for mapping in aws_lb.internal_nlb.subnet_mapping :
-      (
-        mapping.subnet_id == aws_subnet.az1a.id ?
-        aws_subnet.az1a.availability_zone :
-        aws_subnet.az1b.availability_zone
-      ) => mapping.private_ipv4_address
-    }
   }
 }
 output "external_nlb_by_az" {
@@ -61,13 +53,5 @@ output "external_nlb_by_az" {
   value = {
     dns_name = aws_lb.external_nlb.dns_name
 
-    ips_by_az = {
-      for mapping in aws_lb.external_nlb.subnet_mapping :
-      (
-        mapping.subnet_id == aws_subnet.az1a.id ?
-        aws_subnet.az1a.availability_zone :
-        aws_subnet.az1b.availability_zone
-      ) => mapping.private_ipv4_address
-    }
   }
 }

@@ -1,6 +1,5 @@
-#########################
+
 # REGION
-#########################
 
 variable "aws_region" {
   description = "AWS Region"
@@ -8,9 +7,7 @@ variable "aws_region" {
   default     = "ap-south-1"
 }
 
-#########################
 # NETWORK VARIABLES
-#########################
 
 variable "vpc_cidr" {
   description = "VPC CIDR block"
@@ -26,9 +23,8 @@ variable "subnet_az1b_cidr" {
   description = "Subnet CIDR for AZ ap-south-1b"
   type        = string
 }
-#########################
+
 # EC2 VARIABLES
-#########################
 
 variable "instance_type" {
   description = "EC2 instance type"
@@ -51,17 +47,14 @@ variable "key_pair_name" {
   type        = string
 }
 
-#########################
 # TAGGING
-#########################
 
 variable "project_name" {
   type        = string
   default     = "hysecure"
 }
-#################################
+
 # Instance AZ Selection
-#################################
 
 variable "instance_az_map" {
   description = "Which AZ each instance should be deployed into"

@@ -1,6 +1,5 @@
-############################################
+
 # Internal Network Load Balancer
-############################################
 
 resource "aws_lb" "internal_nlb" {
   name               = "hysecure-internal-nlb"
@@ -20,9 +19,7 @@ resource "aws_lb" "internal_nlb" {
   }
 }
 
-############################################
 # Listener - Database (3306)
-############################################
 
 resource "aws_lb_listener" "listener_db" {
   load_balancer_arn = aws_lb.internal_nlb.arn
@@ -35,9 +32,7 @@ resource "aws_lb_listener" "listener_db" {
   }
 }
 
-############################################
 # Listener - Info Agent (939)
-############################################
 
 resource "aws_lb_listener" "listener_info" {
   load_balancer_arn = aws_lb.internal_nlb.arn

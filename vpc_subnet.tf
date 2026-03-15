@@ -1,6 +1,5 @@
-#########################
+
 # VPC
-#########################
 
 resource "aws_vpc" "hysecure_vpc" {
   cidr_block           = var.vpc_cidr
@@ -12,9 +11,7 @@ resource "aws_vpc" "hysecure_vpc" {
   })
 }
 
-##############################
 # SUBNETS (Multi-AZ) Private
-##############################
 
 resource "aws_subnet" "az1a" {
   vpc_id            = aws_vpc.hysecure_vpc.id
@@ -36,9 +33,8 @@ resource "aws_subnet" "az1b" {
   })
 }
 
-#############################################
-# VIP ENI - AZ1A (Auto IP)
-#############################################
+
+# VIP ENI - AZ1A 
 
 resource "aws_network_interface" "vip_az1a" {
   subnet_id       = aws_subnet.az1a.id
@@ -48,9 +44,8 @@ resource "aws_network_interface" "vip_az1a" {
     Name = "${var.project_name}-vip-az1a"
   }
 }
-#############################################
+
 # VIP ENI - AZ1B (Auto IP)
-#############################################
 
 resource "aws_network_interface" "vip_az1b" {
   subnet_id       = aws_subnet.az1b.id

@@ -52,34 +52,34 @@ resource "aws_lb_target_group" "tg_InfoAgent" {
     timeout             = 5
   }
 }
-############################################
+
 # HTTPS - Active
-############################################
+
 resource "aws_lb_target_group_attachment" "active_https" {
   target_group_arn = aws_lb_target_group.tg_https.arn
   target_id        = aws_instance.active_node.private_ip
   port             = 443
 }
 
-############################################
+
 # HTTPS - Standby
-############################################
+
 resource "aws_lb_target_group_attachment" "standby_https" {
   target_group_arn = aws_lb_target_group.tg_https.arn
   target_id        = aws_instance.standby_node.private_ip
   port             = 443
 }
-############################################
+
 # HTTPS - Real-Node-1
-############################################
+
 resource "aws_lb_target_group_attachment" "realnode1_https" {
   target_group_arn = aws_lb_target_group.tg_https.arn
   target_id        = aws_instance.real_node.private_ip
   port             = 443
 }
-############################################
+
 # Target for Internal-Communication
-############################################
+
 resource "aws_lb_target_group_attachment" "active_db" {
   target_group_arn = aws_lb_target_group.tg_db.arn
   target_id        = aws_instance.active_node.private_ip
