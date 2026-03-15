@@ -1,3 +1,4 @@
+# terraform version
 terraform {
   required_version = ">= 1.5"
 
@@ -8,7 +9,7 @@ terraform {
     }
   }
 }
-
+# aws provider 
 provider "aws" {
   region = var.aws_region
 }
