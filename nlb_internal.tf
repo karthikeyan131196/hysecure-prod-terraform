@@ -2,7 +2,7 @@
 # Internal Network Load Balancer
 
 resource "aws_lb" "internal_nlb" {
-  name               = "hysecure-internal-nlb"
+  name               = "${var.project_name}-internal-nlb"
   internal           = true
   load_balancer_type = "network"
   ip_address_type    = "ipv4"
@@ -15,7 +15,7 @@ resource "aws_lb" "internal_nlb" {
   enable_cross_zone_load_balancing = true
 
 tags = merge(local.common_tags, {
-    name = "${var.project_name}-internal-lb"
+Name = "${var.project_name}-internal-lb"
   })
 }
 

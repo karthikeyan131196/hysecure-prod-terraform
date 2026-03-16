@@ -2,7 +2,7 @@
 # External Network Load Balancer
 
 resource "aws_lb" "external_nlb" {
-  name               = "hysecure-external-nlb"
+  name               = "${var.project_name}-external-nlb"
   internal           = false
   load_balancer_type = "network"
   ip_address_type    = "ipv4"
@@ -14,9 +14,9 @@ resource "aws_lb" "external_nlb" {
 
   enable_cross_zone_load_balancing = true
 
-  tags = {
-    Name = "hysecure-external-nlb"
-  }
+    tags = merge(local.common_tags, {
+    Name = "${var.project_name}-external-lb"
+  })
 }
 
 

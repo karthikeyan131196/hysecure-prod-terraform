@@ -4,7 +4,7 @@
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.hysecure_vpc.id
 
-tags = merge(local.common_tags, {
+    tags = merge(local.common_tags, {
     Name = "${var.project_name}-igw"
   })
 }
@@ -15,7 +15,7 @@ tags = merge(local.common_tags, {
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.hysecure_vpc.id
 
-tags = merge(local.common_tags, {
+    tags = merge(local.common_tags, {
     Name = "${var.project_name}-public-rt"
   })
 }

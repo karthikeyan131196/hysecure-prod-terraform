@@ -16,7 +16,7 @@ resource "aws_lb_target_group" "tg_https" {
     timeout             = 5
   }
   tags = merge(local.common_tags, {
-    name = "${var.project_name}-tg-https"
+    Name = "${var.project_name}-tg-https"
   })
 }
 resource "aws_lb_target_group" "tg_db" {
@@ -37,7 +37,7 @@ resource "aws_lb_target_group" "tg_db" {
     timeout             = 5
   }
     tags = merge(local.common_tags, {
-    name = "${var.project_name}-tg-db"
+    Name = "${var.project_name}-tg-db"
   })
 }
 resource "aws_lb_target_group" "tg_InfoAgent" {
@@ -58,7 +58,7 @@ resource "aws_lb_target_group" "tg_InfoAgent" {
     timeout             = 5
   }
     tags = merge(local.common_tags, {
-    name = "${var.project_name}-tg-InfoAgent"
+    Name = "${var.project_name}-tg-InfoAgent"
   })
 }
 
