@@ -4,7 +4,7 @@ resource "aws_lb_target_group" "tg_https" {
   protocol    = "TCP"
   target_type = "ip"
 
-  vpc_id      = aws_vpc.hysecure_vpc.id
+  vpc_id = aws_vpc.hysecure_vpc.id
 
   health_check {
     protocol            = "HTTPS"
@@ -15,6 +15,9 @@ resource "aws_lb_target_group" "tg_https" {
     interval            = 30
     timeout             = 5
   }
+  tags = merge(local.common_tags, {
+    name = "${var.project_name}-tg-https"
+  })
 }
 resource "aws_lb_target_group" "tg_db" {
   name        = "tg-db"
@@ -22,7 +25,7 @@ resource "aws_lb_target_group" "tg_db" {
   protocol    = "TCP"
   target_type = "ip"
 
-  vpc_id      = aws_vpc.hysecure_vpc.id
+  vpc_id = aws_vpc.hysecure_vpc.id
 
   health_check {
     protocol            = "HTTPS"
@@ -33,6 +36,9 @@ resource "aws_lb_target_group" "tg_db" {
     interval            = 30
     timeout             = 5
   }
+    tags = merge(local.common_tags, {
+    name = "${var.project_name}-tg-db"
+  })
 }
 resource "aws_lb_target_group" "tg_InfoAgent" {
   name        = "tg-infoagent"
@@ -40,7 +46,7 @@ resource "aws_lb_target_group" "tg_InfoAgent" {
   protocol    = "TCP"
   target_type = "ip"
 
-  vpc_id      = aws_vpc.hysecure_vpc.id
+  vpc_id = aws_vpc.hysecure_vpc.id
 
   health_check {
     protocol            = "HTTPS"
@@ -51,6 +57,9 @@ resource "aws_lb_target_group" "tg_InfoAgent" {
     interval            = 30
     timeout             = 5
   }
+    tags = merge(local.common_tags, {
+    name = "${var.project_name}-tg-InfoAgent"
+  })
 }
 
 # HTTPS - Active

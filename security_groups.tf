@@ -6,11 +6,11 @@ resource "aws_security_group" "hysecure_sg" {
   # TCP INBOUND 
 
   ingress {
-  from_port   = 443
-  to_port     = 443
-  protocol    = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
-  description = "User login"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "User login"
   }
 
   dynamic "ingress" {
@@ -60,7 +60,7 @@ resource "aws_security_group" "hysecure_sg" {
     description = "Allow all outbound"
   }
 
-  tags = {
+  tags = merge(local.common_tags, {
     Name = "${var.project_name}-sg"
-  }
+  })
 }

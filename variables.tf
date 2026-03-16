@@ -50,8 +50,8 @@ variable "key_pair_name" {
 # TAGGING
 
 variable "project_name" {
-  type        = string
-  default     = "hysecure"
+  type    = string
+  default = "hysecure"
 }
 
 # Instance AZ Selection

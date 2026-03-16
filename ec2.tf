@@ -18,13 +18,13 @@ resource "aws_key_pair" "hysecure_key" {
   public_key = tls_private_key.hysecure_key.public_key_openssh
 }
 resource "aws_instance" "active_node" {
-  ami                         = var.ami_id
-  instance_type               = var.instance_type
-  subnet_id                   = local.subnet_by_az[var.instance_az_map["active"]]
-  vpc_security_group_ids      = [aws_security_group.hysecure_sg.id]
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = local.subnet_by_az[var.instance_az_map["active"]]
+  vpc_security_group_ids = [aws_security_group.hysecure_sg.id]
 
   key_name                    = var.key_pair_name
-  associate_public_ip_address = true
+  associate_public_ip_address = false
 
   root_block_device {
     volume_size = var.root_volume_size
@@ -39,10 +39,10 @@ resource "aws_instance" "active_node" {
   depends_on = [aws_key_pair.hysecure_key]
 }
 resource "aws_instance" "standby_node" {
-  ami                         = var.ami_id
-  instance_type               = var.instance_type
-  subnet_id                   = local.subnet_by_az[var.instance_az_map["standby"]]
-  vpc_security_group_ids      = [aws_security_group.hysecure_sg.id]
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = local.subnet_by_az[var.instance_az_map["standby"]]
+  vpc_security_group_ids = [aws_security_group.hysecure_sg.id]
 
   key_name                    = var.key_pair_name
   associate_public_ip_address = false
@@ -60,10 +60,10 @@ resource "aws_instance" "standby_node" {
   depends_on = [aws_key_pair.hysecure_key]
 }
 resource "aws_instance" "real_node" {
-  ami                         = var.ami_id
-  instance_type               = var.instance_type
-  subnet_id                   = local.subnet_by_az[var.instance_az_map["active"]]
-  vpc_security_group_ids      = [aws_security_group.hysecure_sg.id]
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  subnet_id              = local.subnet_by_az[var.instance_az_map["active"]]
+  vpc_security_group_ids = [aws_security_group.hysecure_sg.id]
 
   key_name                    = var.key_pair_name
   associate_public_ip_address = false

@@ -4,9 +4,9 @@
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.hysecure_vpc.id
 
-  tags = {
-    Name = "hysecure-igw"
-  }
+tags = merge(local.common_tags, {
+    Name = "${var.project_name}-igw"
+  })
 }
 
 
@@ -15,9 +15,9 @@ resource "aws_internet_gateway" "igw" {
 resource "aws_route_table" "public_rt" {
   vpc_id = aws_vpc.hysecure_vpc.id
 
-  tags = {
-    Name = "hysecure-public-rt"
-  }
+tags = merge(local.common_tags, {
+    Name = "${var.project_name}-public-rt"
+  })
 }
 
 # Internet Route

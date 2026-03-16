@@ -45,7 +45,7 @@ resource "aws_network_interface" "vip_az1a" {
   }
 }
 
-# VIP ENI - AZ1B (Auto IP)
+# VIP ENI - AZ1B
 
 resource "aws_network_interface" "vip_az1b" {
   subnet_id       = aws_subnet.az1b.id

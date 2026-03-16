@@ -14,9 +14,9 @@ resource "aws_lb" "internal_nlb" {
 
   enable_cross_zone_load_balancing = true
 
-  tags = {
-    Name = "hysecure-internal-nlb"
-  }
+tags = merge(local.common_tags, {
+    name = "${var.project_name}-internal-lb"
+  })
 }
 
 # Listener - Database (3306)
