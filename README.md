@@ -41,6 +41,7 @@ Internal Network Load Balancer (Between Active and standby)
 Ports:
 3306 → Database communication
 939 → InfoAgent communication
+
 # Repository Structure
 hysecure-prod-terraform
 │
@@ -162,17 +163,36 @@ Install the following tools:
 
 - Terraform >= 1.5
 - AWS CLI
-- Git
 
 Check versions:
 
 terraform -v
 aws --version
-git --version
 
 # Configure AWS Credentials
 
+
 aws configure
+
+[default]
+aws_access_key_id = AKIAxxxxxxxxxxxx
+aws_secret_access_key = xxxxxxxxxxxxx
+
+[default]
+region = ap-south-1
+output = json
+
+# Verify Configuration
+
+aws sts get-caller-identity
+
+Expected output:
+
+{
+"UserId": "XXXXXXXXXXXX",
+"Account": "123456789012",
+"Arn": "arn:aws:iam::123456789012:user/your-user"
+}
 
 # Deploy Infrastructure
 
