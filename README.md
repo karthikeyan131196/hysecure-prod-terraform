@@ -208,8 +208,11 @@ terraform plan
 
 Deploy infrastructure:
 
+terraform apply
 
----
+or 
+
+terraform apply -auto-approve
 
 # Terraform Outputs
 
