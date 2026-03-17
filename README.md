@@ -1,4 +1,4 @@
-# HySecure AWS Infrastructure – Terraform
+# HySecure Multi-Zone AWS Infrastructure – Terraform
 
 ## Overview
 This repository contains **Terraform Infrastructure as Code (IaC)** used to deploy the **HySecure Gateway infrastructure on AWS**.
